@@ -1,4 +1,4 @@
-## N Dimensional Root Finder Algorithm
+## Broyden's Method - N Dimensional Quasi Newton Root Finder Algorithm
 
 For the purposes of this thesis project, we need to generate data that describes the composition of the interior of a neutron star. In particular, we would like to find the values of various particle fractions (equivalently fermi momenta), meson mediator field values, all as a function of baryon number density nB. 
 
