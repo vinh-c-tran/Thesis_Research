@@ -1,3 +1,3 @@
 # Sound Speed Difference
 
-The ultimate goal of this thesis project is to calculate the sound speed difference 
+The ultimate goal of this thesis project is to calculate the sound speed difference. To this end, we write a few functions that perform this implementation... 
