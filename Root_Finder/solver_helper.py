@@ -24,22 +24,47 @@ class eos:
     # equation of state coupling constants 
     def __init__(self, n0 = 0.153,
                 g_sigma_N = 0.0, g_omega_N = 0.0, g_rho_N = 0.0, g_phi_N = 0.0, b = 0.0, c = 0.0,\
-                g_sigma_H = 0.0, g_omega_H = 0.0, g_rho_H = 0.0, g_phi_H = 0.0):
+                g_sigma_H = 0.0, g_omega_H = 0.0, g_rho_H = 0.0, g_phi_H = 0.0,\
+                g_sigma_l = 0.0, g_omega_l = 0.0, g_rho_l = 0.0, g_phi_l = 0.0,\
+                g_sigma_sig = 0.0, g_omega_sig = 0.0, g_rho_sig = 0.0, g_phi_sig= 0.0,\
+                g_sigma_xi = 0.0, g_omega_xi = 0.0, g_rho_xi = 0.0, g_phi_xi = 0.0):
         
+        # saturation density 
         self.n0 = n0
+
+        # nucleon couplings 
         self.g_sigma_N = g_sigma_N
         self.g_omega_N = g_omega_N
         self.g_rho_N = g_rho_N
         self.g_phi_N = g_phi_N
 
+        # sigma self coupling 
         self.b = b
         self.c = c
 
+        # universal hyperon coupling
         self.g_sigma_H = g_sigma_H
         self.g_omega_H = g_omega_H
         self.g_rho_H = g_rho_H
         self.g_phi_H = g_phi_H
 
+        # Lambda baryon couplings 
+        self.g_sigma_l = g_sigma_l
+        self.g_omega_l = g_omega_l
+        self.g_rho_l = g_rho_l
+        self.g_phi_l = g_phi_l
+
+        # Sigma baryon couplings
+        self.g_sigma_sig = g_sigma_sig
+        self.g_omega_sig = g_omega_sig
+        self.g_rho_sig = g_rho_sig
+        self.g_phi_sig = g_phi_sig
+
+        # Xi baryon couplings 
+        self.g_sigma_xi = g_sigma_xi
+        self.g_omega_xi = g_omega_xi 
+        self.g_rho_xi = g_rho_xi 
+        self.g_phi_xi = g_phi_xi
 
 class baryon:
     # baryon class, stores both symbolic and numeric values in a single class 
@@ -165,31 +190,31 @@ Lambda = baryon(name = 'Lambda', spin = 1/2, isospin = 0, charge = 0, kind = 'Hy
                 sym_frac =  sym.symbols('x_Lambda'), sym_kf = sym.symbols('k_Lambda'), sym_ef = sym.symbols('E^*_Lambda'), sym_chem_pot = sym.symbols('mu_Lambda'),\
                 num_mass = 1116.0)
 
-Sigma_neu = baryon(name = 'Sigma_0', spin = 1/2, isospin = 1.0, charge = 0.0, kind = 'Hyperon', var_type = '',\
+Sigma_neu = baryon(name = 'Sigma 0', spin = 1/2, isospin = 0.0, charge = 0.0, kind = 'Hyperon', var_type = '',\
                     sym_mass = sym.symbols('m_Sigma_0'), sym_mass_eff = sym.symbols('m_Sigma_0^*'),\
                     sym_density = sym.symbols('n_Sigma_0'), sym_frac = sym.symbols('x_Sigma_0'), sym_kf = sym.symbols('k_Sigma'),\
                     sym_ef = sym.symbols('E^*_Sigma'), sym_chem_pot = sym.symbols('mu_Sigma'),\
                     num_mass = 1192.642)
 
-Sigma_plus = baryon(name = 'Sigma_+', spin = 1/2, isospin = 1.0, charge = 1.0, kind = 'Hyperon', var_type = '',\
+Sigma_plus = baryon(name = 'Sigma +', spin = 1/2, isospin = 1.0, charge = 1.0, kind = 'Hyperon', var_type = '',\
                     sym_mass = sym.symbols('m_Sigma_+'), sym_mass_eff = sym.symbols('m_Sigma_+^*'),\
                     sym_density = sym.symbols('n_Sigma_+'), sym_frac = sym.symbols('x_Sigma_+'), sym_kf = sym.symbols('k_Sigma_+'),\
                     sym_ef = sym.symbols('E^*_Sigma_+'), sym_chem_pot = sym.symbols('mu_Sigma_+'),\
                     num_mass = 1189.37)
 
-Sigma_min = baryon(name = 'Sigma_-', spin = 1/2, isospin = 1.0, charge = -1.0, kind = 'Hyperon', var_type = '',\
+Sigma_min = baryon(name = 'Sigma -', spin = 1/2, isospin = -1.0, charge = -1.0, kind = 'Hyperon', var_type = '',\
                     sym_mass = sym.symbols('m_Sigma_-'), sym_mass_eff = sym.symbols('m_Sigma_-^*'),\
                     sym_density = sym.symbols('n_Sigma_-'), sym_frac = sym.symbols('x_Sigma_-'), sym_kf = sym.symbols('k_Sigma_-'),\
                     sym_ef = sym.symbols('E^*_Sigma_-'), sym_chem_pot = sym.symbols('mu_Sigma_-'),\
                     num_mass = 1197.5)
 
-xi_neu_sym = baryon(name = 'Xi_0', spin = 1/2, isospin = 1/2, charge = 0.0, kind = 'Hyperon', var_type = '',\
+xi_neu_sym = baryon(name = 'Xi 0', spin = 1/2, isospin = 1/2, charge = 0.0, kind = 'Hyperon', var_type = '',\
                     sym_mass = sym.symbols('m_Xi_0'), sym_mass_eff =  sym.symbols('m_Xi_0^*'),\
                     sym_density = sym.symbols('n_Xi_0'), sym_frac = sym.symbols('x_Xi_0'), sym_kf =  sym.symbols('k_Xi_0'),\
                     sym_ef = sym.symbols('E^*_Xi_0'), sym_chem_pot = sym.symbols('mu_Xi_0'),\
                     num_mass = 1314.86)
 
-xi_min_sym = baryon(name = 'Xi_-', spin = 1/2, isospin = 1/2, charge = -1.0, kind = 'Hyperon', var_type = '',\
+xi_min_sym = baryon(name = 'Xi -', spin = 1/2, isospin = -1/2, charge = -1.0, kind = 'Hyperon', var_type = '',\
                     sym_mass = sym.symbols('m_Xi_-'), sym_mass_eff = sym.symbols('m_Xi_-^*'),\
                     sym_density = sym.symbols('n_Xi_-'), sym_frac = sym.symbols('x_Xi_-'), sym_kf = sym.symbols('k_Xi_-'),\
                     sym_ef = sym.symbols('E^*_Xi_-'), sym_chem_pot = sym.symbols('mu_Xi_-'),\
@@ -243,10 +268,30 @@ def baryon_coupling(baryon, eos):
         baryon.sym_g_rho = g_rho_H_sym
         baryon.sym_g_phi = g_phi_H_sym
 
-        baryon.num_g_sigma = eos.g_sigma_H
-        baryon.num_g_omega = eos.g_omega_H
-        baryon.num_g_rho = eos.g_rho_H
-        baryon.num_g_phi = eos.g_phi_H
+        # baryon.num_g_sigma = eos.g_sigma_H
+        # baryon.num_g_omega = eos.g_omega_H
+        # baryon.num_g_rho = eos.g_rho_H
+        # baryon.num_g_phi = eos.g_phi_H
+    
+    elif (baryon.name.split()[0] == 'Lambda'):
+        baryon.num_g_sigma = eos.g_sigma_l
+        baryon.num_g_omega = eos.g_omega_l
+        baryon.num_g_rho = eos.g_rho_l
+        baryon.num_g_phi = eos.g_phi_l
+    
+    elif (baryon.name.split()[0] == 'Sigma'):
+        baryon.num_g_sigma = eos.g_sigma_sig
+        baryon.num_g_omega = eos.g_omega_sig
+        baryon.num_g_rho = eos.g_rho_sig
+        baryon.num_g_phi = eos.g_phi_sig
+    
+    elif (baryon.name.split()[0] == 'Xi'):
+        baryon.num_g_sigma = eos.g_sigma_xi
+        baryon.num_g_omega = eos.g_omega_xi
+        baryon.num_g_rho = eos.g_rho_xi
+        baryon.num_g_phi = eos.g_phi_xi
+    
+    
 
 
 def sigma_coupling(eos):
@@ -272,22 +317,35 @@ def meson_coupling(meson, eos):
 
 # write an initialization function 
 
-def init(eos, baryon_list, meson_list):
+def init(eos, baryon_list, meson_list, lepton_list):
     """ Takes eos object and loads in all coupling constants into mesons, baryons """
 
-    # load coupling constants into baryon objects
+    # baryons 
     for baryon in baryon_list:
+        # load coupling constants into baryon objects
         baryon_coupling(baryon, eos)
+
+        # resets fermi momenta values
+        baryon.num_kf = 0.0 
 
     # load in sigma self coupling 
     sigma_coupling(eos)
 
-    # meson coupling
+    # mesons
     for meson in meson_list:
+        # meson coupling 
         meson_coupling(meson, eos)
+        # reset meson field values
+        meson.num_field = 0.0 
 
     # ordering meson list
     meson_list.sort(key = mass)
+
+
+    # lepton list stuff 
+    for lepton in lepton_list:
+        # reset fermi momenta 
+        lepton.num_kf = 0.0
 
 
 
@@ -407,18 +465,22 @@ def neutron_chem_pot_num(fermi, sigma_field = 0.0, omega_field = 0.0, rho_field 
 
 
 def lepton_chem_pot(lepton):
-    # returns chemical potential in terms of momenta symbol 
-    # and mass symbol
+    """
+    returns chemical potential in terms of momenta symbol 
+    and mass symbol
+    """
     return sym.sqrt(lepton.sym_kf**2 + lepton.sym_mass**2)
 
 
 def electron_chem_pot_num(fermi):
-    # return numerical chemical potential for electron
+    """ return numerical chemical potential for electron """ 
     return np.sqrt(fermi**2 + electron.num_mass**2)
 
 
 def beta_equilibrium(baryon_list, meson_list):
-    # generates a list of all beta equilibrium conditions 
+    """ generates a list of all beta equilibrium conditions 
+        for baryons 
+    """
     neutron_chem_pot = baryon_chem_pot(Neutron, meson_list)
     electron_chem_pot = lepton_chem_pot(electron)
 
@@ -431,16 +493,18 @@ def beta_equilibrium(baryon_list, meson_list):
 
 
 def beta_equilibrium_lep(lepton_list):
+    """ beta equilibrium condition for leptons """
+
     result = lepton_chem_pot(electron)
     for lepton in lepton_list:
         if (lepton != electron):
             result -= lepton_chem_pot(lepton)
     return result 
-# charge conservation
 
 
 def charge_conservation(baryon_list, lepton_list):
-    # gives charge conservation equation condition on fermi momentum 
+    """ gives charge neutrality equation condition on fermi momentum """ 
+
     particles = baryon_list + lepton_list 
     expression = 0 
 
@@ -565,6 +629,9 @@ def fraction(fermi, nB):
 """
 
 def potential_baryon_gen(baryon_list):
+    """ takes a list of baryons and returns a list of baryons
+        with the proton and neutron removed and ordered in terms of mass
+    """
     pot_list = []
     for baryon in baryon_list:
         if (baryon != Proton and baryon != Neutron):
@@ -603,9 +670,9 @@ def electron_chem_pot_num(fermi):
 
 
 def bare_chemical_potential(baryon, meson_list):
-    # finds bare chemical potential for a baryon given a list of mesons
-    # assumes meson objects are filled with field values
-    # this code is ugly and is not easily generalizable... 
+    """finds bare chemical potential for a baryon given a list of mesons
+    assumes meson objects are filled with field values
+    this code is ugly and is not easily generalizable... """
     bare_chem = 0.0 
     for meson in meson_list:
         if (meson == sigma):
@@ -620,7 +687,7 @@ def bare_chemical_potential(baryon, meson_list):
 
 
 def baryon_threshold(baryon, meson_list):
-    # checks to see if combination of neutron and electron chemical potential 
+    """ checks to see if combination of neutron and electron chemical potential """ 
     
     neutron_chem_pot = neutron_chem_pot_num_test(Neutron.num_kf, meson_list) 
     electron_chem_pot = electron_chem_pot_num(electron.num_kf)
@@ -632,8 +699,10 @@ def baryon_threshold(baryon, meson_list):
     
 
 def lepton_threshold(lepton):
-    # checks to see if electron chemical potential is large enough
-    # to support entrance of other leptons, namely, muon 
+    """ 
+    checks to see if electron chemical potential is large enough
+    to support entrance of other leptons, namely, muon
+    """ 
     if (electron.num_kf >= lepton.num_mass):
         return True
     else:
@@ -641,10 +710,12 @@ def lepton_threshold(lepton):
 
 
 def column_name(baryon_list, meson_list, lepton_list):
-    # generate column names
-    # this is used to create the Dataframe in which we store our values
-    # Data frame is well suited to Jupyter visualization which is great! 
-    # can convert/extract to numpy array too I suppose 
+    """
+    generate column names
+    this is used to create the Dataframe in which we store our values
+    Data frame is well suited to Jupyter visualization which is great! 
+    can convert/extract to numpy array too I suppose 
+    """
 
     columns = ['nB/n0']
     
@@ -680,7 +751,7 @@ def column_name(baryon_list, meson_list, lepton_list):
 
 
 def reserve_baryons(baryon_list):
-    # returns list of baryons that aren't protons or neutrons
+    """ returns list of baryons that aren't protons or neutrons """
     reserve_list = []
     for baryon in baryon_list:
         if (baryon != Proton and baryon != Neutron):
@@ -689,7 +760,7 @@ def reserve_baryons(baryon_list):
 
 
 def reserve_leptons(lepton_list):
-    # return list of leptons that aren't electrons 
+    """ return list of leptons that aren't electrons """
     reserve_list = []
     for lepton in lepton_list:
         if (lepton != electron):
@@ -702,10 +773,9 @@ def mass(particle):
 
 
 def ind_variable(baryon_lists, lepton_lists, meson_lists):
-    # get the independent variables in our system 
+    """ get the independent variables in our system """
     
     ind_vars = []
-    
     
     for meson in meson_lists:
         ind_vars.append(meson.sym_field)
@@ -733,15 +803,19 @@ def ind_variable(baryon_lists, lepton_lists, meson_lists):
 
 
 def frac(fermi, nb):
-    # calculates fraction given fermi momentum and nB
+    """ calculates fraction given fermi momentum and nB """ 
     return fermi**3 /3/np.pi**2/nb
 
 
-def full_solve(eos, baryon_list, lepton_list, meson_list, npe_guess, solver_method = 'broyden'):
-    # full solver 
+def full_solve(eos, baryon_list, lepton_list, meson_list, npe_guess, csv_name = 'data', solver_method = 'broyden'):
+    """ full solver 
+        from an eos, baryon list, lepton list, meson list,
+        calculate and return a DataFrame of values of meson fields, 
+        particle fractions/momenta, etc as a function of baryon density 
+    """
     
-    # initialize all things... 
-    init(eos, baryon_list, meson_list)
+    # initialize all things
+    init(eos, baryon_list, meson_list, lepton_list)
     
     # create nB array 
     nB = np.arange(0.27, 8.0, 0.01) #nB/n0
@@ -766,25 +840,55 @@ def full_solve(eos, baryon_list, lepton_list, meson_list, npe_guess, solver_meth
     ind_vars = ind_variable(current_baryons, current_leptons, meson_list)
     
     # initial guess for NPE matter 
-    ## SHOOT: NEED TO PROVIDE DIFFERENT X GUESSES DEPENDING ON 
-    # MESONS USED... FML 
-    # x_guess = [8.00, 4.50, 210.0, 45.0, 45.0] 
-    #x_guess = [] 
-    #for i in range(len(ind_vars)):
-    #    x_guess.append(20.0) 
     x_guess = npe_guess
+
+    # check if correct number of arguments 
+    if (len(x_guess) != len(ind_vars)):
+        print("Number of parameters in initial guess doesn't\
+             match the number of independent variables. Check number of mesons.")
+        quit() 
     
     # iterate through baryon density nB 
     for i in range(len(nB_mev)): 
         
         # update our system: 
         
+        # old baryon update
+        # if (potential_baryons[0] != 'None'):
+        #     Bool = baryon_threshold(potential_baryons[0], meson_list) 
+        #     if (Bool):
+        #         current_baryons.append(potential_baryons[0])
+        #         potential_baryons.remove(potential_baryons[0])
+        #         x_guess = np.append(x_guess, 27.0)
+
+        ## 04/10/2022 - testing new baryon update that considers possibility of other baryons
+        ## not sorted by mass appearing which is possible due to charge affecting the threshold equation
+        ## had an issue where some hyperons never appeared and thought it was because 
+        # if (potential_baryons[0] != 'None'):
+        #     bool_list = np.zeros(len(potential_baryons), dtype = 'bool')
+        #     for i in range(len(bool_list)-1):
+        #         # iterate through potential baryon list and check if we can add new baryons
+        #         Bool = baryon_threshold(potential_baryons[i], meson_list) 
+        #         if Bool: 
+        #             current_baryons.append(potential_baryons[i])
+        #             x_guess = np.append(x_guess, 40.0)
+        #         bool_list[i] = Bool 
+        #     for i in range(len(bool_list)):
+        #         if bool_list[i] == True:
+        #             potential_baryons.remove(potential_baryons[i])
+
+        ## 04/10/2022 - testing new baryon update version 2
+        ## issue might've been iter variable choice 
         if (potential_baryons[0] != 'None'):
-            Bool = baryon_threshold(potential_baryons[0], meson_list) 
-            if (Bool):
-                current_baryons.append(potential_baryons[0])
-                potential_baryons.remove(potential_baryons[0])
-                x_guess = np.append(x_guess, 27.0)
+            for shikimori in range(len(potential_baryons) - 1):
+                Bools = baryon_threshold(potential_baryons[shikimori], meson_list)
+                if (Bools):
+                    current_baryons.append(potential_baryons[shikimori])
+                    potential_baryons.remove(potential_baryons[shikimori])
+                    x_guess = np.append(x_guess, 43.0)
+                    break 
+
+
         
         if (potential_leptons[0] != 'None'):
             Bool = lepton_threshold(potential_leptons[0])
@@ -794,7 +898,7 @@ def full_solve(eos, baryon_list, lepton_list, meson_list, npe_guess, solver_meth
                 x_guess = np.append(x_guess, 2.0)
         
         # 
-        init(eos, baryon_list, meson_list)
+        #init(eos, baryon_list, meson_list, lepton_list)
             
         # generate system of equations 
         sys_eqn = sys_eqn_gen(current_baryons, meson_list, current_leptons)
@@ -846,6 +950,6 @@ def full_solve(eos, baryon_list, lepton_list, meson_list, npe_guess, solver_meth
     
     
     # write out dataframe to csv file 
-    data_frame.to_csv('data.csv', float_format = '{:.8f}'.format)
+    data_frame.to_csv(csv_name + '.csv', float_format = '{:.8f}'.format)
     
     return data_frame 
